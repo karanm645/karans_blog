@@ -3,7 +3,12 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @blog_posts = user_signed_in? ? BlogPost.all : BlogPost.published.sorted
+    if user_signed_in?
+      @blog_posts = BlogPost.all
+    else
+      @blog_posts = BlogPost.published.sorted
+    #@blog_posts = user_signed_in? ? BlogPost.all : BlogPost.published.sorted
+    end 
   end 
 
   def show 
