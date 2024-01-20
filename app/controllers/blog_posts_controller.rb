@@ -3,7 +3,7 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @blog_posts = user_signed_in? ? BlogPost.all : BlogPost.sorted
+    @blog_posts = user_signed_in? ? BlogPost.all : BlogPost.published.sorted
   end 
 
   def show 
@@ -44,7 +44,7 @@ class BlogPostsController < ApplicationController
   end
 
   def set_blog_post
-    @blog_post = user_signed_in? ? BlogPost.find(params[:id]) : Blogpost.published.find(params[:id])
+    @blog_post = user_signed_in? ? BlogPost.find(params[:id]) : BlogPost.published.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end 
