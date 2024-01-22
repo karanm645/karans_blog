@@ -5,8 +5,10 @@ class BlogPostsController < ApplicationController
   def index 
     if user_signed_in?
       @blog_posts = BlogPost.all.sorted
+      @pagy, @blog_posts = pagy(@blog_posts)
     else
       @blog_posts = BlogPost.published.sorted
+      @pagy, @blog_posts = pagy(@blog_posts)
     #@blog_posts = user_signed_in? ? BlogPost.all : BlogPost.published.sorted
     end 
   end 
