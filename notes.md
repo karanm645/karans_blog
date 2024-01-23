@@ -14,3 +14,4 @@
 # gem update --system (good for when you install new ruby version)
 # then run bundle update
 # run bin/dev to install foreman
+# rails routes -g cover_image --> specific
