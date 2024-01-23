@@ -9,8 +9,6 @@
 # s3 bucket name: karans-blog
 # s3 policy name: karans-blog-s3
 # console user name: karans-blog
-# access key: AKIA6BXHLLTQQALZTSWI
-# secret: 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
 # gem update --system (good for when you install new ruby version)
 # then run bundle update
 # run bin/dev to install foreman
