@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resource :cover_image, only: [:destroy], module: :blog_posts
   end 
   root "blog_posts#index"
+  get "/about", to: "pages#about"
 end

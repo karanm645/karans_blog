@@ -11,22 +11,22 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body class="prose mx-auto">
+  <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
 
-    <div>
+    <%= render partial: "/blog_posts/navbar" %>
     <% if user_signed_in? %>
-      <%= link_to "New blog post", new_blog_post_path %>
+      <%= link_to "New blog post", new_blog_post_path, class: "px-4 py-1 text-sm text-teal-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-teal-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2" %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "px-4 py-1 text-sm text-teal-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-teal-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2"  %>
       <%#= link_to "Profile", edit_user_registration_path %>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
     <%# else %>
       <%#= link_to "Login", new_user_session_path %>
       <%#= link_to "Sign up", new_user_registration_path %>
     <% end %>
-    </div>
-
+    <div class="class= prose mx-auto">
     <%= yield %>
+    </div>
   </body>
 </html>
