@@ -11,6 +11,10 @@
     <%= form.text_field :title %>
   </div>
   <div>
+    <%= form.label :snippet %>
+    <%= form.text_area :snippet %>
+  </div>
+  <div>
     <%= form.label :cover_image %>
     <% if blog_post.cover_image.present? %>
       <div id="<%= dom_id(blog_post, :cover_image) %>">

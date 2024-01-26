@@ -6,15 +6,19 @@
 <div class="class= prose mx-auto">
   <h1 class="pt-5">My Articles</h1>
     <% @blog_posts.each do |blog_post| %>
-      <div>
-        <%= image_tag blog_post.cover_image, class: "w-1/2" if blog_post.cover_image.present? %>
-        <h2><%= link_to blog_post.title, blog_post %></h2>
-        <% if blog_post.draft? %>
-          <div class="p-2 rounded bg-gray-100 text_gray-900">Draft</div>
-        <% elsif blog_post.scheduled? %>
-          <div class="p-2 rounded bg-pink-100 text-pink-900">Schedule</div>
-        <%end %>
-          <%= blog_post.content %>
+      <div class="flex flex-row">
+        <div class="basis-2/4"><%= image_tag blog_post.cover_image, class: "w-80" if blog_post.cover_image.present? %></div>
+        <div class="flex-col">
+          <div><h2><%= link_to blog_post.title, blog_post, class: "text-right" %></h2></div>
+          <div><p><%= blog_post.snippet %></p></div>
+          <div><p>Created at: <%= blog_post.created_at.strftime('%b/%d/%Y') %><p></div>
+          <div><p>Updated at: <%= blog_post.updated_at.strftime('%b/%d/%Y') %><p></div>
+          <% if blog_post.draft? %>
+            <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>
+          <% elsif blog_post.scheduled? %>
+            <div class="p-2 rounded bg-pink-100 text-pink-900">Schedule</div>
+          <%end %>
+        </div>
       </div>
     <% end %>
     <% if @pagy.count > @pagy.items %>
