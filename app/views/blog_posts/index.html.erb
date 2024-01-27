@@ -1,28 +1,30 @@
 <div class="text-center bg-gradient-to-r from-cyan-500 to-blue-500">
-  <h1 class="tracking-wide text-4xl font-bold pr-8 pl-8 pt-10">Karan, a Ruby on Rails enthusiast and software craftsman </h1>
-  <h2 class="font-sans text-2xl pr-10 pl-10 mx-10 pt-4 pb-10">Currently crafting a cutting-edge marketing platform at Sol Imagery </h2>
+  <h1 class="tracking-wide text-4xl font-bold pr-8 pl-8 pt-10">I'm a Ruby on Rails enthusiast and software craftsman </h1>
+  <h2 class="font-sans text-2xl pr-10 pl-10 mx-10 pt-4 pb-10">Read My Latest Tech Adventures </h2>
 </div>
 
 <div class="class= prose mx-auto">
-  <h1 class="pt-5">My Articles</h1>
+  <h1 class="pt-25 text-6xl mt-6 mb-0 text-center">Code Chronicles</h1>
     <% @blog_posts.each do |blog_post| %>
-      <div class="flex flex-row">
-        <div class="basis-2/4"><%= image_tag blog_post.cover_image, class: "w-80" if blog_post.cover_image.present? %></div>
-        <div class="flex-col">
-          <div><h2><%= link_to blog_post.title, blog_post, class: "text-right" %></h2></div>
-          <div><p><%= blog_post.snippet %></p></div>
-          <div><p>Created at: <%= blog_post.created_at.strftime('%b/%d/%Y') %><p></div>
-          <div><p>Updated at: <%= blog_post.updated_at.strftime('%b/%d/%Y') %><p></div>
           <% if blog_post.draft? %>
             <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>
           <% elsif blog_post.scheduled? %>
             <div class="p-2 rounded bg-pink-100 text-pink-900">Schedule</div>
           <%end %>
+      <div class="flex flex-row">
+      <%= link_to blog_post do %>
+        <div class="basis-1/2 py-12"><%= image_tag blog_post.cover_image, class: "w-80 rounded" if blog_post.cover_image.present? %></div>
+        <%end %>
+        <div class="flex-col basis-1/2 font-mono py-8 pl-6">
+          <div><h2><%= link_to blog_post.title, blog_post, class: "text-right" %></h2></div>
+          <div><p><%= blog_post.snippet %></p></div>
+          <div><p>Created at: <%= blog_post.created_at.strftime('%b/%d/%Y') %><p></div>
+          <div><p>Updated at: <%= blog_post.updated_at.strftime('%b/%d/%Y') %><p></div>
         </div>
       </div>
     <% end %>
     <% if @pagy.count > @pagy.items %>
-      <div class="my-16">
+      <div class="my-16 text-center">
         <%== pagy_nav(@pagy) %>
       </div>
     <% end %>

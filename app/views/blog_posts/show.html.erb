@@ -1,6 +1,7 @@
 <div class="class= prose mx-auto pt-5">
   <%= link_to "Edit blog post", edit_blog_post_path(@blog_post) if user_signed_in? %>
-  <%= image_tag @blog_post.cover_image if @blog_post.cover_image.present? %>
-  <h1><%= @blog_post.title %></h1>
-  <%= @blog_post.content %>
+  <div class="flex justify-center"><%= image_tag @blog_post.cover_image, class: "w-80 rounded" if @blog_post.cover_image.present? %></div>
+  <h1 class ="flex"><%= @blog_post.title %></h1>
+  <div class="mb-16"><%= @blog_post.content %></div>
+  <%= link_to "Back", root_path, class: "pb-8" %>
 </div>
