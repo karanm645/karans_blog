@@ -5,27 +5,27 @@
 
 <div class="class= prose mx-auto font-mono">
   <h1 class="pt-25 text-5xl mt-6 mb-0 text-center underline">Articles</h1>
-    <% @blog_posts.each do |blog_post| %>
-          <% if blog_post.draft? %>
-            <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>
-          <% elsif blog_post.scheduled? %>
-            <div class="p-2 rounded bg-pink-100 text-pink-900">Schedule</div>
-          <%end %>
-      <div class="flex flex-row">
-      <%= link_to blog_post do %>
-        <div class="basis-1/2 py-12"><%= image_tag blog_post.cover_image, class: "w-80 rounded" if blog_post.cover_image.present? %></div>
-        <%end %>
-        <div class="flex-col basis-1/2 font-mono py-8 pl-6">
-          <div><h2><%= link_to blog_post.title, blog_post, class: "text-right" %></h2></div>
-          <div><p><%= blog_post.snippet %></p></div>
-          <div><p>Created at: <%= blog_post.created_at.strftime('%b/%d/%Y') %><p></div>
-          <div><p>Updated at: <%= blog_post.updated_at.strftime('%b/%d/%Y') %><p></div>
-        </div>
+  <% @blog_posts.each do |blog_post| %>
+      <% if blog_post.draft? %>
+        <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>
+      <% elsif blog_post.scheduled? %>
+        <div class="p-2 rounded bg-pink-100 text-pink-900">Schedule</div>
+      <%end %>
+    <div class="flex flex-row">
+      <div class="basis-1/2 py-12 relative ">
+        <%= image_tag blog_post.cover_image, class: "w-80 rounded" if blog_post.cover_image.present? %>
       </div>
-    <% end %>
-    <% if @pagy.count > @pagy.items %>
-      <div class="my-16 text-center">
-        <%== pagy_nav(@pagy) %>
+      <div class="flex-col basis-1/2 font-mono py-8 pl-6">
+        <div><h2><%= link_to blog_post.title, blog_post, class: "text-right" %></h2></div>
+        <div><p><%= blog_post.snippet %></p></div>
+        <div><p>Created at: <%= blog_post.created_at.strftime('%b/%d/%Y') %><p></div>
+        <div><p>Updated at: <%= blog_post.updated_at.strftime('%b/%d/%Y') %><p></div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
+  <% if @pagy.count > @pagy.items %>
+    <div class="my-16 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
 </div>

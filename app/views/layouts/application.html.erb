@@ -7,7 +7,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -27,6 +26,7 @@
     <% end %>
     <!--div class="class= prose mx-auto">-->
     <%= yield %>
+    <%= render partial: "/blog_posts/footer" %>
     </div>
   </body>
 </html>
