@@ -2,14 +2,6 @@
 <html>
   <head>
   <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z070DN91Z0"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-Z070DN91Z0');
-    </script>
     <title>BlogKaran</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -18,6 +10,14 @@
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z070DN91Z0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z070DN91Z0');
+    </script>
   </head>
   <body>
     <p class="notice"><%= notice %></p>
